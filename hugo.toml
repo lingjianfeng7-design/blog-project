@@ -1,0 +1,76 @@
+# -------------------------------
+# Hugo site configuration
+# -------------------------------
+
+# 站点基础信息
+baseURL = "https://yourdomain.com/"      # 你的域名
+title = "Kisun Scaffolding Blog"         # 网站标题
+languageCode = "en-us"
+theme = "PaperMod"                        # 使用 PaperMod 主题
+enableRobotsTXT = true
+defaultContentLanguage = "en"
+hasCJKLanguage = false
+
+# Build / 发布设置
+publishDir = "public"                     # Hugo 输出目录，用于 Cloudflare Pages
+uglyURLs = false
+
+# 文章默认设置
+[markup]
+  defaultMarkdownHandler = "goldmark"
+
+# Goldmark 配置
+  [markup.goldmark.renderer]
+    unsafe = true  # 支持 HTML
+
+# 站点参数 (PaperMod 专用)
+[params]
+  author = "Kisun Shipping"               # 网站作者/公司
+  description = "Professional scaffolding products and construction solutions for global B2B clients."
+  showReadingTime = true
+  dateFormat = "Jan 2, 2006"
+  disableSiteLogo = false
+  logo = "images/logo.png"                # logo 文件路径
+  favicon = "images/favicon.ico"
+
+# PaperMod 主题选项
+[params.paginate]
+  paginate = 10
+
+[params.seo]
+  twitter = "YourTwitterHandle"
+  linkedin = "YourLinkedInProfile"
+  facebook = "YourFacebookPage"
+
+[params.disqus]
+  shortname = ""                          # 如果使用评论，填 disqus shortname
+
+[params.footer]
+  show = true
+  content = "© 2026 Kisun Shipping. All rights reserved."
+
+# 菜单导航
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Products"
+    url = "/products/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Blog"
+    url = "/posts/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 4
+
+# RSS & Sitemap
+enableRSS = true
+sitemap = true
