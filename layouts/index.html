@@ -1,0 +1,53 @@
+{{ define "main" }}
+<div class="three-col">
+  
+  <!-- 左侧边栏：分类导航 -->
+  {{ partial "sidebar-left.html" . }}
+
+  <!-- 主内容区 -->
+  <main class="content-main">
+    
+    <!-- 文章列表 Section -->
+    <div class="section-header">
+      <span class="section-title">全部文章</span>
+      <div class="section-line"></div>
+      <span class="section-count">{{ len (where .Site.RegularPages "Type" "post") }} 篇</span>
+    </div>
+
+    <div class="post-list">
+      {{ range $index, $page := (where .Site.RegularPages "Type" "post") }}
+      <article class="post-item">
+        <span class="post-index">{{ add $index 1 }}</span>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-date">{{ $page.Date.Format "2006-01-02" }}</span>
+            {{ with $page.Params.categories }}
+            <span class="post-dot">•</span>
+            <span class="post-category">{{ index . 0 }}</span>
+            {{ end }}
+          </div>
+          <h2 class="post-title">
+            <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+          </h2>
+          {{ with $page.Params.description }}
+          <p class="post-excerpt">{{ . }}</p>
+          {{ end }}
+          {{ with $page.Params.tags }}
+          <div class="post-tags">
+            {{ range . }}
+            <span class="post-tag"># {{ . }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+
+  </main>
+
+  <!-- 右侧边栏 -->
+  {{ partial "sidebar-right.html" . }}
+
+</div>
+{{ end }}
