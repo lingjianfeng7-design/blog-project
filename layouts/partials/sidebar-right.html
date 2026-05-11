@@ -1,0 +1,55 @@
+<!-- 右侧边栏：关于/作者/联系 -->
+<aside class="sidebar-right">
+  <div class="sidebar-right-inner">
+    
+    <!-- 关于 -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-header">
+        <span class="sidebar-section-title">关于</span>
+        <div class="sidebar-section-line"></div>
+      </div>
+      <p class="about-text">{{ .Site.Params.description }}</p>
+      <p class="about-slogan">// 用笔记记录实践</p>
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <!-- 作者 -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-header">
+        <span class="sidebar-section-title">作者</span>
+        <div class="sidebar-section-line"></div>
+      </div>
+      <p class="author-text">{{ .Site.Params.author_bio }}</p>
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <!-- 联系 -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-header">
+        <span class="sidebar-section-title">联系</span>
+        <div class="sidebar-section-line"></div>
+      </div>
+      <div class="contact-list">
+        {{ with .Site.Params.email }}
+        <div class="contact-item">
+          <span class="contact-icon">✉</span> 
+          <a href="mailto:{{ . }}">{{ . }}</a>
+        </div>
+        {{ end }}
+        {{ with .Site.Params.twitter }}
+        <div class="contact-item">
+          <span class="contact-icon">✦</span> {{ . }}
+        </div>
+        {{ end }}
+        {{ with .Site.Params.github }}
+        <div class="contact-item">
+          <span class="contact-icon">⟐</span> {{ . }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    
+  </div>
+</aside>
