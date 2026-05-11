@@ -1,0 +1,27 @@
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-desc">{{ .Site.Title }} — {{ .Site.Params.description }}</p>
+    
+    <div class="footer-grid">
+      {{ range .Site.Params.footer_cats }}
+      <div>
+        <a href="{{ .url | relLangURL }}" class="footer-cat-title">◆ {{ .name }}</a>
+        <p class="footer-cat-desc">{{ .desc }}</p>
+      </div>
+      {{ end }}
+    </div>
+    
+    <div class="footer-bottom">© {{ now.Year }} {{ .Site.Title }}. 用笔记记录实践.</div>
+  </div>
+</footer>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.page-nav-btn').forEach(b => b.classList.remove('active'));
+  window.scrollTo(0, 0);
+  return false;
+}
+</script>
