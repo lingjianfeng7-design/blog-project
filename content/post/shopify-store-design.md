@@ -2,13 +2,6 @@
 date = '2026-05-09T18:57:26+08:00'
 draft = true
 title = 'My First Post'
-description: "本文介绍 Shopify 店铺设计的基本原则和实战技巧，帮助你打造一个视觉与功能兼备的高转化率电商网站。"
-categories:
-  - "Shopify店铺装修"
-tags:
-  - "UI设计"
-  - "用户体验"
-  - "转化率优化"
 ---
 
 # Shopify 店铺设计指南
