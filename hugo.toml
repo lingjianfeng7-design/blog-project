@@ -1,76 +1,102 @@
-# -------------------------------
-# Hugo site configuration
-# -------------------------------
+baseURL = 'https://example.org/'
+languageCode = 'zh-cn'
+title = 'ShopifyNote'
+theme = "" # 可添加Hugo主题，或留空使用自定义模板
 
-# 站点基础信息
-baseURL = "https://yourdomain.com/"      # 你的域名
-title = "Kisun Scaffolding Blog"         # 网站标题
-languageCode = "en-us"
-theme = "PaperMod"                        # 使用 PaperMod 主题
-enableRobotsTXT = true
-defaultContentLanguage = "en"
-hasCJKLanguage = false
-
-# Build / 发布设置
-publishDir = "public"                     # Hugo 输出目录，用于 Cloudflare Pages
-uglyURLs = false
-
-# 文章默认设置
-[markup]
-  defaultMarkdownHandler = "goldmark"
-
-# Goldmark 配置
-  [markup.goldmark.renderer]
-    unsafe = true  # 支持 HTML
-
-# 站点参数 (PaperMod 专用)
+# 网站元数据
 [params]
-  author = "Kisun Shipping"               # 网站作者/公司
-  description = "Professional scaffolding products and construction solutions for global B2B clients."
-  showReadingTime = true
-  dateFormat = "Jan 2, 2006"
-  disableSiteLogo = false
-  logo = "images/logo.png"                # logo 文件路径
-  favicon = "images/favicon.ico"
+  description = "Shopify 电商实践笔记"
+  author = "独立开发者"
+  author_bio = "独立开发者，长期关注 Shopify 生态。从主题开发到店铺运营，踩过不少坑，也积累了一些心得。"
+  email = "hello@shopifynote.com"
+  twitter = "@shopifynote"
+  github = "shopifynote"
 
-# PaperMod 主题选项
-[params.paginate]
-  paginate = 10
+# 导航配置
+[[params.nav]]
+  name = "首页"
+  id = "home"
+  url = "/"
 
-[params.seo]
-  twitter = "YourTwitterHandle"
-  linkedin = "YourLinkedInProfile"
-  facebook = "YourFacebookPage"
+[[params.nav]]
+  name = "店铺装修"
+  id = "cat-design"
+  url = "/categories/shopify店铺装修/"
 
-[params.disqus]
-  shortname = ""                          # 如果使用评论，填 disqus shortname
+[[params.nav]]
+  name = "网站优化"
+  id = "cat-optimize"
+  url = "/categories/shopify网站优化/"
 
-[params.footer]
-  show = true
-  content = "© 2026 Kisun Shipping. All rights reserved."
+[[params.nav]]
+  name = "主题开发"
+  id = "cat-theme"
+  url = "/categories/shopify主题开发/"
 
-# 菜单导航
-[menu]
-  [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
+# 分类配置
+[[params.categories]]
+  id = "cat-design"
+  name = "Shopify店铺装修"
+  icon = "✎"
+  description = "从视觉设计到用户体验，打造高转化率的 Shopify 店铺"
+  count = 0
 
-  [[menu.main]]
-    name = "Products"
-    url = "/products/"
-    weight = 2
+[[params.categories]]
+  id = "cat-optimize"
+  name = "Shopify网站优化"
+  icon = "◈"
+  description = "速度、SEO、转化率全方位优化实战笔记"
+  count = 0
 
-  [[menu.main]]
-    name = "Blog"
-    url = "/posts/"
-    weight = 3
+[[params.categories]]
+  id = "cat-theme"
+  name = "Shopify主题开发"
+  icon = "▸"
+  description = "Liquid 模板语言、主题定制与开发技巧"
+  count = 0
 
-  [[menu.main]]
-    name = "Contact"
-    url = "/contact/"
-    weight = 4
+# 底部分类链接
+[[params.footer_cats]]
+  name = "Shopify店铺装修"
+  url = "/categories/shopify店铺装修/"
+  desc = "从视觉设计到用户体验，打造高转化率的 Shopify 店铺"
 
-# RSS & Sitemap
-enableRSS = true
-sitemap = true
+[[params.footer_cats]]
+  name = "Shopify网站优化"
+  url = "/categories/shopify网站优化/"
+  desc = "速度、SEO、转化率全方位优化实战笔记"
+
+[[params.footer_cats]]
+  name = "Shopify主题开发"
+  url = "/categories/shopify主题开发/"
+  desc = "Liquid 模板语言、主题定制与开发技巧"
+
+# 颜色配置
+[params.colors]
+  text = "#1a1a1a"
+  muted = "#999"
+  border = "#e5e5e5"
+  accent = "#c4713b"
+  background = "#fafaf7"
+
+# 布局配置
+[params.layout]
+  max_width = 1152
+  sidebar_left_width = 208
+  sidebar_right_width = 240
+
+# 排版配置
+[params.fonts]
+  sans = "'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', system-ui, -apple-system, sans-serif"
+  mono = "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+
+# Hugo 内置配置
+enableRobotsTXT = true
+enableGitInfo = false
+hasCJKLanguage = true
+paginate = 10
+
+#  Permalink 配置
+[permalinks]
+  post = "/:filename/"
+  page = "/:filename/"
