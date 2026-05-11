@@ -96,6 +96,10 @@ enableGitInfo = false
 hasCJKLanguage = true
 paginate = 10
 
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  
 #  Permalink 配置
 [permalinks]
   post = "/:filename/"
