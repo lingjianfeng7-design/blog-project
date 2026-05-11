@@ -1,0 +1,15 @@
+<!-- 顶部导航栏 -->
+<nav class="page-nav">
+  {{ range .Site.Params.nav }}
+  <button class="page-nav-btn{{ if eq $.Title .name }} active{{ end }}" onclick="window.location.href='{{ .url | relLangURL }}'">
+    {{ .name }}
+  </button>
+  {{ end }}
+</nav>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="{{ "/" | relLangURL }}" class="site-logo">{{ .Site.Title }}</a>
+  </div>
+</header>
