@@ -1,0 +1,26 @@
+<!-- 左侧边栏：分类导航 -->
+<aside class="sidebar-left">
+  <div class="sidebar-left-inner">
+    <div class="sidebar-section">
+      <div class="sidebar-section-header">
+        <span class="sidebar-section-title">分类</span>
+        <div class="sidebar-section-line"></div>
+      </div>
+      <nav class="cat-nav-list">
+        {{ range .Site.RegularPages }}
+          <!-- 按分类分组 -->
+        {{ end }}
+        
+        {{ range $cat := .Site.Params.categories }}
+        <a href="{{ $cat.url | relLangURL }}" class="cat-nav-item{{ if eq $.Title $cat.name }} active{{ end }}">
+          <span class="cat-nav-icon">{{ $cat.icon }}</span>
+          <div>
+            <div class="cat-nav-name">{{ $cat.name }}</div>
+            <div class="cat-nav-count">{{ len (where $.Site.RegularPages "Type" $cat.id) }} 篇</div>
+          </div>
+        </a>
+        {{ end }}
+      </nav>
+    </div>
+  </div>
+</aside>
