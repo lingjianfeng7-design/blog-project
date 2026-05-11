@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="three-col">
+  
+  <!-- 左侧边栏：分类导航 -->
+  {{ partial "sidebar-left.html" . }}
+
+  <!-- 主内容区 -->
+  <main class="content-main">
+    
+    <!-- 返回链接 -->
+    <a href="{{ .Site.BaseURL }}" class="back-link">← 返回列表</a>
+
+    <!-- 文章详情 -->
+    <article class="post-detail">
+      <header class="post-detail-header">
+        <h1 class="post-detail-title">{{ .Title }}</h1>
+        <div class="post-detail-meta">
+          <span>{{ .Date.Format "2006-01-02" }}</span>
+          {{ with .Params.categories }}
+          <span>•</span>
+          <span>{{ index . 0 }}</span>
+          {{ end }}
+        </div>
+      </header>
+
+      <div class="post-detail-content">
+        {{ .Content }}
+      </div>
+
+      {{ with .Params.tags }}
+      <div class="post-tags" style="margin-top: 32px;">
+        {{ range . }}
+        <span class="post-tag"># {{ . }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
+    </article>
+
+  </main>
+
+  <!-- 右侧边栏 -->
+  {{ partial "sidebar-right.html" . }}
+
+</div>
+{{ end }}

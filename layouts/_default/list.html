@@ -1,0 +1,72 @@
+{{ define "main" }}
+{{ $pages := .Paginator.Pages }}
+{{ $total := len $pages }}
+<div class="three-col">
+  
+  <!-- 左侧边栏：分类导航 -->
+  {{ partial "sidebar-left.html" . }}
+
+  <!-- 主内容区 -->
+  <main class="content-main">
+    
+    <!-- 文章列表 Section -->
+    <div class="section-header">
+      <span class="section-title">{{ .Title }}</span>
+      <div class="section-line"></div>
+      <span class="section-count">{{ $total }} 篇</span>
+    </div>
+
+    <div class="post-list">
+      {{ range $index, $page := $pages }}
+      <article class="post-item">
+        <span class="post-index">{{ add $index 1 }}</span>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-date">{{ $page.Date.Format "2006-01-02" }}</span>
+            {{ with $page.Params.categories }}
+            <span class="post-dot">•</span>
+            <span class="post-category">{{ index . 0 }}</span>
+            {{ end }}
+          </div>
+          <h2 class="post-title">
+            <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+          </h2>
+          {{ with $page.Params.description }}
+          <p class="post-excerpt">{{ . }}</p>
+          {{ end }}
+          {{ with $page.Params.tags }}
+          <div class="post-tags">
+            {{ range . }}
+            <span class="post-tag"># {{ . }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+
+    <!-- 分页 -->
+    {{ if gt .Paginator.TotalPages 1 }}
+    <div class="pagination">
+      {{ if .Paginator.HasPrev }}
+      <a href="{{ .Paginator.Prev.URL }}" class="pagination-btn">← 上一页</a>
+      {{ end }}
+      {{ range .Paginator.Pagers }}
+      <a href="{{ .URL }}" class="pagination-btn{{ if eq .PageNumber $.Paginator.PageNumber }} active{{ end }}">
+        {{ .PageNumber }}
+      </a>
+      {{ end }}
+      {{ if .Paginator.HasNext }}
+      <a href="{{ .Paginator.Next.URL }}" class="pagination-btn">下一页 →</a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+  </main>
+
+  <!-- 右侧边栏 -->
+  {{ partial "sidebar-right.html" . }}
+
+</div>
+{{ end }}
