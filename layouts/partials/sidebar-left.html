@@ -1,9 +1,9 @@
 <!-- 左侧边栏：分类导航 -->
 <aside class="sidebar-left">
   <div class="sidebar-left-inner">
-    
+
     <div class="sidebar-section">
-      
+
       <div class="sidebar-section-header">
         <span class="sidebar-section-title">分类</span>
         <div class="sidebar-section-line"></div>
@@ -11,24 +11,20 @@
 
       <nav class="cat-nav-list">
 
-        {{ range $cat := .Site.Params.categories }}
+        {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
 
-        {{ $taxonomy := index $.Site.Taxonomies.categories $cat.name }}
+        <a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}/"
+           class="cat-nav-item">
 
-        <a href="/categories/{{ $cat.name | urlize }}/"
-           class="cat-nav-item{{ if eq $.Title $cat.name }} active{{ end }}">
-
-          <span class="cat-nav-icon">
-            {{ $cat.icon }}
-          </span>
+          <span class="cat-nav-icon">✎</span>
 
           <div>
             <div class="cat-nav-name">
-              {{ $cat.name }}
+              {{ $name }}
             </div>
 
             <div class="cat-nav-count">
-              {{ len $taxonomy }} 篇
+              {{ len $taxonomy.Pages }} 篇
             </div>
           </div>
 
