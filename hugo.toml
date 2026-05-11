@@ -1,7 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'zh-cn'
 title = 'ShopifyNote'
-theme = "" # 可添加Hugo主题，或留空使用自定义模板
+theme = "PaperMod" # 可添加Hugo主题，或留空使用自定义模板
 
 # 网站元数据
 [params]
